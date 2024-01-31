@@ -1,13 +1,12 @@
 import config from './config.js';
 import { main } from './thread_worker.js';
 import { fileURLToPath } from 'url';
-import { performance } from 'perf_hooks';
+import { log } from './log.js';
 
 const __filename = fileURLToPath(import.meta.url);
-const start = performance.now();
 
-main(config, __filename).then((primes) => {
-  const end = performance.now();
-  console.log(primes.sort().join(","));
-  console.log(`Execution time: ${end - start} ms`);
+main(config, __filename).then((result) => {
+  console.log(result.primes.sort((a, b) => a - b).join(","));
+  log.green(`Time taken: ${result.time}ms`);
+  log.green(`Using ${result.threads} threads`);
 });

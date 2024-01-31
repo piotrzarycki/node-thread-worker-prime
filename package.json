@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "TEST=true node test_threads.js",
-    "start": "node run.js $THREADS"
+    "start": "MAX=1e7 node run.js $THREADS"
   },
   "author": "Piotr Zarycki",
   "type": "module",

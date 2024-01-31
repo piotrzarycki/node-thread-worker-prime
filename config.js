@@ -1,6 +1,6 @@
 const config = {
   min: 2,
-  max: process.env.TEST ? 1000 : 1e7,
+  max: process.env.TEST ? 1000 : process.env.MAX,
   threadCount: +process.argv[2] || 4,
 };
 

@@ -5,6 +5,7 @@ import {
   parentPort,
   workerData,
 } from 'worker_threads';
+import { performance } from 'perf_hooks';
 
 export function generatePrimes(primesArray, start, range, min) {
   let isPrime = true;
@@ -31,10 +32,9 @@ export async function main(config, filename) {
       const threadCount = config.threadCount;
       const threads = new Set();
 
-      console.log(`Start ${threadCount} threads`);
-
       let start = config.min;
 
+      const performanceStartTime = performance.now();
       for (let i = 0; i < threadCount - 1; i++) {
         const myStart = start;
         threads.add(
@@ -58,10 +58,14 @@ export async function main(config, filename) {
         worker.on("error", reject);
         worker.on("exit", () => {
           threads.delete(worker);
-          console.log(`exiting, ${threads.size} running`);
 
           if (threads.size === 0) {
-            resolve(primes);
+            const endPerformanceTime = performance.now();
+            resolve({
+              primes,
+              time: endPerformanceTime - performanceStartTime,
+              threads: threadCount,
+            });
           }
 
         });
