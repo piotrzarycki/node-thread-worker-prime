@@ -7,8 +7,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "test": "TEST=true node test_threads.js",
-    "start": "MAX=1e7 node run.js $THREADS"
+    "test": "TEST=true node src/test_threads.js",
+    "start": "MAX=1e7 node src/run.js $THREADS"
   },
   "author": "Piotr Zarycki",
   "type": "module",
