@@ -1,0 +1,16 @@
+{
+  "name": "thread-worker-prime",
+  "version": "0.0.1",
+  "description": "Thread Worker Prime Number Generator",
+  "main": "main.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "test": "TEST=true node test_threads.js",
+    "start": "node run.js $THREADS"
+  },
+  "author": "Piotr Zarycki",
+  "type": "module",
+  "license": "MIT"
+}
