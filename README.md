@@ -20,6 +20,9 @@ To install the module, you can clone the repository and install the dependencies
 - `test`: Runs the test suite for the application.
 - `start`: Starts the application.
 
+## Screnshoot
+![Screenshot](screenshot.png)
+
 ## License
 This project is licensed under the MIT License.
 
